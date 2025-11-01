@@ -605,10 +605,12 @@
         // Hide summary
         const summaryEl = document.querySelector("#aiSummary");
         if (summaryEl) summaryEl.style.display = "none";
+        if (showSummaryBtn) showSummaryBtn.textContent = "Summary";
 
         // Hide comparison
         const compareEl = document.querySelector("#aiComparison");
         if (compareEl) compareEl.style.display = "none";
+        if (compareBtn) compareBtn.textContent = "Compare";
       }
 
       if (showReposBtn) {
@@ -657,10 +659,15 @@
           }
 
           // Get second username to compare
-          const github2 = prompt(
+          
+          let github2 ;
+          if(compareBtn.textContent !=="Hide comparision"){
+             github2=prompt(
             "Enter another GitHub username to compare with:"
           );
           if (!github2) return;
+          }
+         
 
           // create or find comparison element
           let compareEl = document.querySelector("#aiComparison");
@@ -690,6 +697,7 @@
 
           // Hide all panels before showing comparison
           hideAllPanels();
+          compareBtn.textContent = "Hide comparision";
           compareEl.style.display = "block";
 
           compareBtn.disabled = true;
@@ -925,7 +933,7 @@ Profile 2 Highlights:
 
           // Hide all panels before showing summary
           hideAllPanels();
-
+          showSummaryBtn.textContent = "Hide Summary";
           // create or find summary element displayed under profile card
           let summaryEl = document.querySelector("#aiSummary");
           if (!summaryEl) {
