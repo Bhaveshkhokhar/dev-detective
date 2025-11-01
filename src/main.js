@@ -97,6 +97,21 @@ searchBtn.addEventListener("click", (e) => {
   else fetchDetails(githubID);
 });
 
+// Handle show/hide repos
+const showReposBtn = document.querySelector(".show-repos-btn");
+const cardArea = document.querySelector(".card-area");
+const reposPanel = document.querySelector(".repos-panel");
+
+showReposBtn.addEventListener("click", () => {
+  if (!cardArea.classList.contains("with-repos")) {
+    cardArea.classList.add("with-repos");
+    showReposBtn.textContent = "Hide Repos";
+  } else {
+    cardArea.classList.remove("with-repos");
+    showReposBtn.textContent = "Show Repos";
+  }
+});
+
 theme.addEventListener("click", () => {
   let body = document.body;
   if (body.classList.contains("dark")) {

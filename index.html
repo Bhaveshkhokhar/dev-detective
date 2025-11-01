@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevDetective</title>
+    <title>HackSherlock</title>
     <link rel="stylesheet" href="./main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,384 +14,1104 @@
   </head>
   <body class="dark">
     <div
-      class="bg-[#f6f8ff] dark:bg-[#141D2F] text-sm w-[100%] relative h-[100vh]"
+      class="bg-[#f6f8ff] dark:bg-[#141D2F] text-sm w-[100%] relative min-h-screen"
     >
       <div
-        class="wrapper w-full h-full flex flex-col items-center justify-center gap-3"
+        class="wrapper w-full h-full flex flex-col items-center justify-center gap-3 pt-[64px]"
       >
         <!-- header and theme -->
-        <div class="header w-[450px] gap-9 flex items-center justify-between">
-          <h2 class="icon text-[#4b6a9b] dark:text-white font-black text-2xl">
-            DevDetective
-          </h2>
-          <div class="flex gap-4 justify-between items-center">
-            <div
-              class="rounded-full bg-[#f6f8ff] dark:bg-[#141d2f] cursor-pointer"
-            >
-              <img
-                src="./light-download.svg"
-                alt=""
-                class="download"
-                width="24px"
-              />
-            </div>
-            <div
-              class="theme flex justify-between items-center w-[75px] tracking-[2.5px] font-bold decoration-[#4b6a9b] dark:decoration-white hover:cursor-pointer"
-            >
-              <p class="text-[#4b6a9b] dark:text-white theme-name">LIGHT</p>
-              <p class="text-[#4b6a9b] dark:text-white">
-                <img src="./sun.svg" alt="" class="theme-icon" width="24px" />
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- search bar -->
-        <div
-          class="search-container w-600px relative bg-[#fefefe] dark:bg-[#1E2A47] rounded-[15px] h-[50px] flex items-center w-[450px] top-4 p-[6px] justify-between"
+        <header
+          class="w-full bg-[#fefefe] dark:bg-[#1E2A47] py-4 px-4 shadow-md fixed top-0 left-0 right-0 z-50"
         >
-          <div class="flex">
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="#0079ff"
-                viewBox="0 0 256 256"
-              >
-                <path
-                  d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
-                ></path>
-              </svg>
-            </p>
-            <input
-              type="text"
-              placeholder="Github Username "
-              id="entry-field"
-              required
-              class="w-[250px] outline-none bg-none text-[#4b6a9b] dark:text-white pl-[5px] placeholder:text-[#4b6a9b] dark:placeholder:dark:text-white dark:bg-[#1e2a47] placeholder:-tracking-[0.5px] placeholder:text-sm"
-            />
-          </div>
-          <!-- <div class="error">
+          <div
+            class="max-w-[full] mx-auto gap-4 flex items-center justify-between"
+          >
+            <h1
+              class="icon text-[#4b6a9b] dark:text-white font-black text-3xl tracking-wide min-w-0"
+            >
+              HackSherlock
+            </h1>
+            <!-- search bar -->
+            <div
+              class="search-container flex-1 mx-3 relative bg-[#fefefe] dark:bg-[#1E2A47] rounded-[20px] h-[50px] flex items-center p-[10px] justify-between border-2"
+            >
+              <div class="flex items-center flex-1 gap-2">
+                <p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="#0079ff"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                    ></path>
+                  </svg>
+                </p>
+                <input
+                  type="text"
+                  placeholder="Github Username "
+                  id="entry-field"
+                  required
+                  class="flex-1 outline-none bg-none text-[#4b6a9b] dark:text-white pl-[5px] placeholder:text-[#4b6a9b] dark:placeholder:dark:text-white dark:bg-[#1e2a47] placeholder:-tracking-[0.5px] placeholder:text-sm"
+                />
+              </div>
+              <!-- <div class="error">
                 <p id="no-results">no search results</p>
             </div> -->
-          <p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="#4b6a9b"
-              viewBox="0 0 256 256"
-              class="cross"
-            >
-              <path
-                d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
-              ></path>
-            </svg>
-          </p>
-          <button
-            title="search"
-            class="search-button w-[84px] pr-10px bg-[#0079ff] text-white font-bold text-sm h-[30px] rounded-md hover:cursor-pointer hover:bg-[#60abff]"
-          >
-            Search
-          </button>
-        </div>
-
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="#4b6a9b"
+                  viewBox="0 0 256 256"
+                  class="cross"
+                >
+                  <path
+                    d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                  ></path>
+                </svg>
+              </p>
+              <button
+                title="search"
+                class="search-button w-[84px] pr-10px bg-[#0079ff] text-white font-bold text-sm h-[30px] rounded-md hover:cursor-pointer hover:bg-[#60abff]"
+              >
+                Search
+              </button>
+            </div>
+            <div class="flex gap-4 justify-between items-center">
+              <div
+                class="rounded-full bg-[#f6f8ff] dark:bg-[#141d2f] cursor-pointer"
+              >
+                <img
+                  src="./light-download.svg"
+                  alt=""
+                  class="download"
+                  width="24px"
+                />
+              </div>
+              <div
+                class="theme flex justify-between items-center w-[75px] tracking-[2.5px] font-bold decoration-[#4b6a9b] dark:decoration-white hover:cursor-pointer"
+              >
+                <p class="text-[#4b6a9b] dark:text-white theme-name">LIGHT</p>
+                <p class="text-[#4b6a9b] dark:text-white">
+                  <img src="./sun.svg" alt="" class="theme-icon" width="24px" />
+                </p>
+              </div>
+            </div>
+          </div>
+        </header>
         <!-- profile card -->
-        <div
-          class="profile-container bg-[#fefefe] dark:bg-[#1E2A47] rounded-2xl w-[450px] mt-[25px] p-[24px] flex gap-6"
-          data-profile
-        >
-          <div class="w-100px">
-            <img
-              src=""
-              alt="profile-image"
-              profile-img
-              class="min-w-[90px] rounded-[90px]"
-            />
-          </div>
-          <div>
+        <div class="card-area mx-auto">
+          <!-- Profile Card Wrapper -->
+          <div class="profile-card-wrapper">
             <div
-              class="flex justify-between w-[300px] items-center tracking-tighter font-bold"
+              class="profile-container bg-[#fefefe] dark:bg-[#1E2A47] rounded-2xl w-[450px] mt-[25px] p-[24px] flex flex-col gap-2"
+              data-profile
             >
-              <p class="name text-3xl text-[#2b3442] dark:text-white"></p>
-              <p class="date text-gray-500 opacity-70"></p>
-            </div>
+              <div class="flex gap-6">
+                <div class="w-[200px]">
+                  <img
+                    src=""
+                    alt="profile-image"
+                    profile-img
+                    class="w-[100px] h-[100px] rounded-full object-cover"
+                  />
+                </div>
+                <div>
+                  <div
+                    class="flex justify-between w-[300px] items-center tracking-tighter font-bold"
+                  >
+                    <p class="name text-3xl text-[#2b3442] dark:text-white"></p>
+                    <p class="date text-gray-500 opacity-70"></p>
+                  </div>
 
-            <p
-              class="username text-[#0079ff] tracking-tighter underline font-semibold mt-[6px]"
-            ></p>
-            <p
-              class="info mt-[6px] mb-[30px] text-[#4b6a9b] dark:text-white"
-            ></p>
-            <div>
-              <div
-                class="flex justify-between h-[100px] bg-[#f6f8ff] dark:bg-[#141D2F] rounded-[20px] pt-[30px] pb-[30px] pl-[20px] pr-[20px] mb-[20px]"
-              >
-                <div class="flex flex-col items-center justify-between gap-2">
-                  <p class="text-gray-500 tracking-tighter">Repos</p>
-                  <p class="repo font-extrabold dark:text-white"></p>
+                  <p
+                    class="username text-[#0079ff] tracking-tighter underline font-semibold mt-[6px]"
+                  ></p>
+                  <p
+                    class="info mt-[6px] mb-[30px] text-[#4b6a9b] dark:text-white"
+                  ></p>
                 </div>
-                <div class="flex flex-col items-center justify-between gap-2">
-                  <p class="text-gray-500 tracking-tighter">Followers</p>
-                  <p class="followers font-extrabold dark:text-white"></p>
+                <div class="w-full">
+                  <div
+                    class="flex justify-between h-[100px] bg-[#f6f8ff] dark:bg-[#141D2F] rounded-[20px] pt-[30px] pb-[30px] pl-[20px] pr-[20px] mb-[20px]"
+                  >
+                    <div
+                      class="flex flex-col items-center justify-between gap-2"
+                    >
+                      <p class="text-gray-500 tracking-tighter">Repos</p>
+                      <p class="repo font-extrabold dark:text-white"></p>
+                    </div>
+                    <div
+                      class="flex flex-col items-center justify-between gap-2"
+                    >
+                      <p class="text-gray-500 tracking-tighter">Followers</p>
+                      <p class="followers font-extrabold dark:text-white"></p>
+                    </div>
+                    <div
+                      class="flex flex-col items-center justify-between gap-2"
+                    >
+                      <p class="text-gray-500 tracking-tighter">Following</p>
+                      <p class="following font-extrabold dark:text-white"></p>
+                    </div>
+                  </div>
                 </div>
-                <div class="flex flex-col items-center justify-between gap-2">
-                  <p class="text-gray-500 tracking-tighter">Following</p>
-                  <p class="following font-extrabold dark:text-white"></p>
+              </div>
+              <div>
+                <!-- Action Buttons -->
+                <div class="flex gap-4 mb-4">
+                  <button
+                    class="show-repos-btn flex-1 bg-[#0079ff] text-white font-bold text-sm h-[30px] px-4 rounded-md hover:cursor-pointer hover:bg-[#60abff]"
+                  >
+                    Show Repos
+                  </button>
+                  <button
+                    class="show-summary-btn flex-1 bg-[#2ea043] text-white font-bold text-sm h-[30px] px-4 rounded-md hover:cursor-pointer hover:bg-[#3fb950]"
+                  >
+                    Summary
+                  </button>
+                  <button
+                    class="compare-btn flex-1 bg-[#7b61ff] text-white font-bold text-sm h-[30px] px-4 rounded-md hover:cursor-pointer hover:bg-[#8f78ff]"
+                  >
+                    Compare
+                  </button>
                 </div>
-              </div>
-            </div>
-            <div
-              class="social-media flex flex-wrap items-center justify-between gap-2"
-            >
-              <div
-                class="location flex items-center justify-between gap-1 text-gray-400"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="#4b6a9b"
-                  viewBox="0 0 256 256"
+                <div
+                  class="social-media flex flex-wrap items-center justify-between gap-2"
                 >
-                  <path
-                    d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"
-                  ></path>
-                </svg>
-                <p class="location-para"></p>
-              </div>
-              <div
-                class="link flex items-center justify-between gap-1 text-gray-400"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="#4b6a9b"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M137.54,186.36a8,8,0,0,1,0,11.31l-9.94,10A56,56,0,0,1,48.38,128.4L72.5,104.28A56,56,0,0,1,149.31,102a8,8,0,1,1-10.64,12,40,40,0,0,0-54.85,1.63L59.7,139.72a40,40,0,0,0,56.58,56.58l9.94-9.94A8,8,0,0,1,137.54,186.36Zm70.08-138a56.08,56.08,0,0,0-79.22,0l-9.94,9.95a8,8,0,0,0,11.32,11.31l9.94-9.94a40,40,0,0,1,56.58,56.58L172.18,140.4A40,40,0,0,1,117.33,142,8,8,0,1,0,106.69,154a56,56,0,0,0,76.81-2.26l24.12-24.12A56.08,56.08,0,0,0,207.62,48.38Z"
-                  ></path>
-                </svg>
-                <a class="link-para"></a>
-              </div>
-              <div
-                class="twitter flex items-center justify-between gap-1 text-gray-400"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="#4b6a9b"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M245.66,77.66l-29.9,29.9C209.72,177.58,150.67,232,80,232c-14.52,0-26.49-2.3-35.58-6.84-7.33-3.67-10.33-7.6-11.08-8.72a8,8,0,0,1,3.85-11.93c.26-.1,24.24-9.31,39.47-26.84a110.93,110.93,0,0,1-21.88-24.2c-12.4-18.41-26.28-50.39-22-98.18a8,8,0,0,1,13.65-4.92c.35.35,33.28,33.1,73.54,43.72V88a47.87,47.87,0,0,1,14.36-34.3A46.87,46.87,0,0,1,168.1,40a48.66,48.66,0,0,1,41.47,24H240a8,8,0,0,1,5.66,13.66Z"
-                  ></path>
-                </svg>
-                <a class="twitter-para"></a>
-              </div>
-              <div
-                class="email flex items-center justify-between gap-1 text-gray-400"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="#4b6a9b"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"
-                  ></path>
-                </svg>
-                <a class="email-para"></a>
+                  <div
+                    class="location flex items-center justify-between gap-1 text-gray-400"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="#4b6a9b"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"
+                      ></path>
+                    </svg>
+                    <p class="location-para"></p>
+                  </div>
+                  <div
+                    class="link flex items-center justify-between gap-1 text-gray-400"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="#4b6a9b"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M137.54,186.36a8,8,0,0,1,0,11.31l-9.94,10A56,56,0,0,1,48.38,128.4L72.5,104.28A56,56,0,0,1,149.31,102a8,8,0,1,1-10.64,12,40,40,0,0,0-54.85,1.63L59.7,139.72a40,40,0,0,0,56.58,56.58l9.94-9.94A8,8,0,0,1,137.54,186.36Zm70.08-138a56.08,56.08,0,0,0-79.22,0l-9.94,9.95a8,8,0,0,0,11.32,11.31l9.94-9.94a40,40,0,0,1,56.58,56.58L172.18,140.4A40,40,0,0,1,117.33,142,8,8,0,1,0,106.69,154a56,56,0,0,0,76.81-2.26l24.12-24.12A56.08,56.08,0,0,0,207.62,48.38Z"
+                      ></path>
+                    </svg>
+                    <a class="link-para"></a>
+                  </div>
+                  <div
+                    class="twitter flex items-center justify-between gap-1 text-gray-400"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="#4b6a9b"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M245.66,77.66l-29.9,29.9C209.72,177.58,150.67,232,80,232c-14.52,0-26.49-2.3-35.58-6.84-7.33-3.67-10.33-7.6-11.08-8.72a8,8,0,0,1,3.85-11.93c.26-.1,24.24-9.31,39.47-26.84a110.93,110.93,0,0,1-21.88-24.2c-12.4-18.41-26.28-50.39-22-98.18a8,8,0,0,1,13.65-4.92c.35.35,33.28,33.1,73.54,43.72V88a47.87,47.87,0,0,1,14.36-34.3A46.87,46.87,0,0,1,168.1,40a48.66,48.66,0,0,1,41.47,24H240a8,8,0,0,1,5.66,13.66Z"
+                      ></path>
+                    </svg>
+                    <a class="twitter-para"></a>
+                  </div>
+                  <div
+                    class="email flex items-center justify-between gap-1 text-gray-400"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="#4b6a9b"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"
+                      ></path>
+                    </svg>
+                    <a class="email-para"></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <!-- Repos panel (MOVED OUTSIDE profile-card-wrapper) -->
+          <aside class="repos-panel" id="reposPanel">
+            <h3 class="text-lg font-bold mb-3">Repositories</h3>
+            <div class="repos-list" id="reposList"></div>
+          </aside>
         </div>
       </div>
     </div>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
-        const cross = document.querySelector(".cross");
-const entryField = document.querySelector("#entry-field");
-const profileContainer = document.querySelector("[data-profile]");
-const profileImage = document.querySelector("[profile-img]");
-const profileName = document.querySelector(".name");
-const createdDate = document.querySelector(".date");
-const username = document.querySelector(".username");
-const bio = document.querySelector(".info");
-const repos = document.querySelector(".repo");
-const followers = document.querySelector(".followers");
-const following = document.querySelector(".following");
-const locationPara = document.querySelector(".location-para");
-const websiteLink = document.querySelector(".link-para");
-const twitter = document.querySelector(".twitter-para");
-const email = document.querySelector(".email-para");
-const searchBtn = document.querySelector(".search-button");
-const theme = document.querySelector(".theme");
-let darkMode = false;
-const themeName = document.querySelector(".theme-name");
-const themeIcon = document.querySelector(".theme-icon");
-const download = document.querySelector(".download");
+      const cross = document.querySelector(".cross");
+      const entryField = document.querySelector("#entry-field");
+      const profileContainer = document.querySelector("[data-profile]");
+      const profileImage = document.querySelector("[profile-img]");
+      const profileName = document.querySelector(".name");
+      const createdDate = document.querySelector(".date");
+      const username = document.querySelector(".username");
+      const bio = document.querySelector(".info");
+      const repos = document.querySelector(".repo");
+      const followers = document.querySelector(".followers");
+      const following = document.querySelector(".following");
+      const locationPara = document.querySelector(".location-para");
+      const websiteLink = document.querySelector(".link-para");
+      const twitter = document.querySelector(".twitter-para");
+      const email = document.querySelector(".email-para");
+      const searchBtn = document.querySelector(".search-button");
+      const theme = document.querySelector(".theme");
+      let darkMode = false;
+      const themeName = document.querySelector(".theme-name");
+      const themeIcon = document.querySelector(".theme-icon");
+      const download = document.querySelector(".download");
 
-download.addEventListener("click", (e) => {
-  capture(profileContainer);
-});
+      // simple in-memory cache for fetched data to avoid refetching
+      let cachedUsername = "";
+      let cachedProfile = null;
+      let cachedRepos = null;
 
-entryField.addEventListener("input", (e) => {
-  if (e.target.value) {
-    cross.classList.add("active");
-  } else {
-    cross.classList.remove("active");
-    profileContainer.classList.remove("active");
-  }
-});
+      download.addEventListener("click", (e) => {
+        capture(profileContainer);
+      });
 
-cross.addEventListener("click", () => {
-  entryField.value = "";
-  cross.classList.remove("active");
-  profileContainer.classList.remove("active");
-});
+      entryField.addEventListener("input", (e) => {
+        if (e.target.value) {
+          cross.classList.add("active");
+        } else {
+          cross.classList.remove("active");
+          profileContainer.classList.remove("active");
+          // hide download button when input is cleared
+          download.classList.remove("active");
+          // hide repos panel if open
+          if (typeof cardArea !== "undefined" && cardArea) {
+            cardArea.classList.remove("with-repos");
+            if (showReposBtn) showReposBtn.textContent = "Show Repos";
+          }
+          if (typeof reposListEl !== "undefined" && reposListEl)
+            reposListEl.innerHTML = "";
 
-async function renderProfileInfo(data) {
-  profileImage.src = data.avatar_url;
-  profileName.textContent = data.name;
-  createdDate.textContent = new Date(data.created_at).toDateString();
-  username.textContent = `@${data.login}`;
-  bio.textContent = data.bio;
-  const response = await fetch(data.repos_url);
-  const data2 = await response.json();
-  repos.textContent = data2.length;
-  followers.textContent = data.followers;
-  following.textContent = data.following;
-  // locationPara.textContent = data?.location || "Not Available";
-  setElement(locationPara, data.location);
-  websiteLink.href = data?.blog || "Not Available";
-  // websiteLink.textContent = data?.blog || "Not Available";
-  setElement(websiteLink, data.blog);
-  // twitter.textContent = data?.twitter_username || "Not Available";
-  twitter.href = data?.twitter_username || "Not Available";
-  // twitter.textContent = data.twitter_username || "Not Available";
-  setElement(twitter, data.twitter_username);
-  email.href = data?.email || "Not Available";
-  // email.textContent = data.email || "Not Available";
-  setElement(email, data.email);
-}
+          // hide summary and comparison panels if they exist
+          const summaryEl = document.querySelector("#aiSummary");
+          if (summaryEl) summaryEl.style.display = "none";
+          const compareEl = document.querySelector("#aiComparison");
+          if (compareEl) compareEl.style.display = "none";
+          // clear caches
+          cachedUsername = "";
+          cachedProfile = null;
+          cachedRepos = null;
+        }
+      });
 
-function setElement(element, text) {
-  if (text) {
-    element.textContent = text;
-    element.classList.add("blue-color");
-  } else {
-    element.textContent = "Not Available";
-  }
-}
+      cross.addEventListener("click", () => {
+        entryField.value = "";
+        cross.classList.remove("active");
+        profileContainer.classList.remove("active");
+        // hide download button when user clears the search
+        download.classList.remove("active");
+        // hide repos panel if open
+        if (typeof cardArea !== "undefined" && cardArea) {
+          cardArea.classList.remove("with-repos");
+          if (showReposBtn) showReposBtn.textContent = "Show Repos";
+        }
+        if (typeof reposListEl !== "undefined" && reposListEl)
+          reposListEl.innerHTML = "";
+        // hide summary and comparison panels if they exist
+        const summaryEl = document.querySelector("#aiSummary");
+        if (summaryEl) summaryEl.style.display = "none";
+        const compareEl = document.querySelector("#aiComparison");
+        if (compareEl) compareEl.style.display = "none";
+        // clear caches
+        cachedUsername = "";
+        cachedProfile = null;
+        cachedRepos = null;
+      });
 
-async function fetchDetails(github) {
-  try {
-    const response = await fetch(`https://api.github.com/users/${github}`);
-    const data = await response.json();
-    if (data.name) {
-      profileContainer.classList.add("active");
-      download.classList.add("active");
-      renderProfileInfo(data);
-    } else {
-      download.classList.remove("active");
-    }
-  } catch (err) {
-    console.log("Error in fetching data...");
-  }
-}
+      async function renderProfileInfo(data) {
+        profileImage.src = data.avatar_url;
+        profileName.textContent = data.name;
+        createdDate.textContent = new Date(data.created_at).toDateString();
+        username.textContent = `@${data.login}`;
+        bio.textContent = data.bio;
+        // use repoDetails (which caches) to get repo list/count so we don't double-fetch
+        try {
+          const data2 = await repoDetails(data.login);
+          repos.textContent = Array.isArray(data2)
+            ? data2.length
+            : data.public_repos || 0;
+        } catch (err) {
+          // fallback to public_repos if repo fetch fails
+          repos.textContent = data.public_repos || 0;
+        }
+        followers.textContent = data.followers;
+        following.textContent = data.following;
+        // locationPara.textContent = data?.location || "Not Available";
+        setElement(locationPara, data.location);
+        websiteLink.href = data?.blog || "Not Available";
+        // websiteLink.textContent = data?.blog || "Not Available";
+        setElement(websiteLink, data.blog);
+        // twitter.textContent = data?.twitter_username || "Not Available";
+        twitter.href = data?.twitter_username || "Not Available";
+        // twitter.textContent = data.twitter_username || "Not Available";
+        setElement(twitter, data.twitter_username);
+        email.href = data?.email || "Not Available";
+        // email.textContent = data.email || "Not Available";
+        setElement(email, data.email);
+      }
 
-searchBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  let githubID = entryField.value;
+      function setElement(element, text) {
+        if (text) {
+          element.textContent = text;
+          element.classList.add("blue-color");
+        } else {
+          element.textContent = "Not Available";
+        }
+      }
 
-  if (githubID === "") return;
-  else fetchDetails(githubID);
-});
+      // --- AI output rendering helpers ---
+      // Parse plain text (with newlines and simple list markers) into DOM nodes
+      function createParagraph(text) {
+        const p = document.createElement("p");
+        p.className =
+          "ai-paragraph mt-2 text-sm text-[#2b3442] dark:text-white";
+        p.textContent = text;
+        return p;
+      }
 
-theme.addEventListener("click", () => {
-  let body = document.body;
-  if (body.classList.contains("dark")) {
-    body.classList.remove("dark");
-    themeName.textContent = "DARK";
-    themeIcon.src = "moon-fill.svg";
-    download.src = "dark-download.svg";
-  } else {
-    body.classList.add("dark");
-    themeName.textContent = "LIGHT";
-    themeIcon.src = "sun.svg";
-    download.src = "light-download.svg";
-  }
-});
+      function parseTextToNodes(text) {
+        const lines = (text || "").split(/\r?\n/);
+        const nodes = [];
+        let paraLines = [];
 
-// function darkModeProperties(){
-//     document.body.classlist.add("dark");
-//     themeName.textContent="LIGHT";
-//     themeIcon.src="sun.svg";
-//     darkMode=true;
-//     localStorage.setItem("dark-mode", true);  console.log("setting dark mode to false");
+        function flushParagraph() {
+          if (paraLines.length) {
+            nodes.push(createParagraph(paraLines.join(" ")));
+            paraLines = [];
+          }
+        }
 
-//     console.log("setting dark mode to true");
+        for (let raw of lines) {
+          const line = raw.trim();
+          if (line === "") {
+            // paragraph break
+            flushParagraph();
+            continue;
+          }
 
-// }
-// function lightModeProperties(){
-//     document.body.classlist.remove("dark");
-//     themeName.textContent="DARK";
-//     themeIcon.src="moon-fill.svg";
-//     darkMode = false;
-//     console.log("darkmode changed to " + darkMode);
+          // unordered or ordered list item detection
+          const ulMatch = /^[-*]\s+(.+)$/.exec(line);
+          const olMatch = /^(\d+)\.\s+(.+)$/.exec(line);
 
-//     localStorage.setItem("dark-mode", false);
-//     console.log("setting dark mode to false");
-// }
+          if (ulMatch || olMatch) {
+            // start a list node
+            flushParagraph();
+            const list = document.createElement(ulMatch ? "ul" : "ol");
+            list.className =
+              "ai-list mt-2 text-sm text-[#2b3442] dark:text-white list-disc ml-6";
+            const itemText = ulMatch ? ulMatch[1] : olMatch[2];
+            const li = document.createElement("li");
+            li.textContent = itemText;
+            list.appendChild(li);
+            // gather following consecutive list items
+            // lookahead index
+            let idx = lines.indexOf(raw) + 1;
+            // Because we used raw from lines, find next lines by scanning
+            // Simpler: push list now and continue; subsequent list items will create their own lists
+            nodes.push(list);
+            continue;
+          }
 
-// function init() {
-//     //initialise dark-mode variable to false;
-//     //darkMode = true -> dark mode enable karna h
-//     //darMode = false -> light mode enable karna h
-//     darkMode = false;
+          // otherwise accumulate paragraph lines
+          paraLines.push(raw);
+        }
 
-//     //HW
-//   // const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        flushParagraph();
+        return nodes;
+      }
 
-//     const value = localStorage.getItem("dark-mode");
+      // Type text into an element character-by-character
+      function typeTextInto(el, text, speed = 12) {
+        return new Promise((resolve) => {
+          el.textContent = "";
+          let i = 0;
+          const t = setInterval(() => {
+            el.textContent += text.charAt(i);
+            i++;
+            if (i >= text.length) {
+              clearInterval(t);
+              resolve();
+            }
+          }, speed);
+        });
+      }
 
-//     if(value === null) {
-//       console.log("null k andar");
-//       localStorage.setItem("dark-mode", darkMode);
-//       lightModeProperties();
-//     }
-//     else if(value == "true") {
-//       console.log("truer k andar");
-//       darkModeProperties();
-//     }
-//     else if(value == "false") {
-//       console.log("false k andar");
-//       lightModeProperties();
-//     }
-//   }
+      // Render parsed nodes with typing animation
+      async function renderAIOutput(container, text, speed = 8) {
+        if (!container) return;
+        container.innerHTML = "";
+        const nodes = parseTextToNodes(text);
+        for (const node of nodes) {
+          if (node.tagName === "P") {
+            const p = document.createElement("p");
+            p.className = node.className;
+            container.appendChild(p);
+            // type paragraph
+            // small pause before each paragraph
+            await typeTextInto(p, node.textContent, speed);
+            await new Promise((r) => setTimeout(r, 150));
+          } else if (node.tagName === "UL" || node.tagName === "OL") {
+            const list = document.createElement(node.tagName.toLowerCase());
+            list.className = node.className;
+            container.appendChild(list);
+            for (const srcLi of node.children) {
+              const li = document.createElement("li");
+              li.className = "ai-list-item";
+              list.appendChild(li);
+              await typeTextInto(li, srcLi.textContent, Math.max(speed - 2, 6));
+              await new Promise((r) => setTimeout(r, 80));
+            }
+            await new Promise((r) => setTimeout(r, 120));
+          } else {
+            // fallback: append raw node
+            container.appendChild(node);
+          }
+        }
+      }
 
-//   init();
+      async function fetchDetails(github) {
+        try {
+          const response = await fetch(
+            `https://api.github.com/users/${github}`
+          );
+          const data = await response.json();
+          if (data.name) {
+            profileContainer.classList.add("active");
+            download.classList.add("active");
+            // cache profile data to avoid refetching
+            cachedUsername = github;
+            cachedProfile = data;
+            renderProfileInfo(data);
+          } else {
+            download.classList.remove("active");
+          }
+        } catch (err) {
+          console.log("Error in fetching data...");
+        }
+      }
+      // fetch repos and return array
+      async function repoDetails(github) {
+        try {
+          // return cached repos if available for same user
+          if (cachedUsername === github && Array.isArray(cachedRepos)) {
+            return cachedRepos;
+          }
+          const response = await fetch(
+            `https://api.github.com/users/${github}/repos`
+          );
+          const data = await response.json();
+          if (Array.isArray(data) && data.length > 0) {
+            // cache repos
+            cachedUsername = github;
+            cachedRepos = data;
+            return data;
+          } else {
+            download.classList.remove("active");
+            return [];
+          }
+        } catch (err) {
+          console.log("Error in fetching data...", err);
+          return [];
+        }
+      }
 
-function capture(element) {
-  html2canvas(element, {
-    backgroundColor: null,
-    useCors: true,
-  }).then(function (canvas) {
-    const URL = canvas.toDataURL("image/jpeg", 1);
-    const a = document.createElement("a");
-    a.href = URL;
-    a.download = `dev_detective_${profileName.textContent}.jpeg`;
-    a.click();
-  });
-}
+      // render repos list into the repos panel
+      const showReposBtn = document.querySelector(".show-repos-btn");
+      const cardArea = document.querySelector(".card-area");
+      const reposListEl = document.querySelector("#reposList");
 
+      function renderRepos(repos) {
+        if (!reposListEl) return;
+        reposListEl.innerHTML = "";
+        if (!repos || repos.length === 0) {
+          reposListEl.innerHTML = `<p class=\"text-sm\">No repositories found</p>`;
+          return;
+        }
+        // sort newest first
+        repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        repos.forEach((r) => {
+          // Use a div so the download button can be a separate interactive element
+          const item = document.createElement("div");
+          item.className =
+            "repo-item mb-2 block hover:bg-[#0079ff10] transition-colors cursor-pointer relative p-3 rounded";
+          item.setAttribute("role", "link");
+          item.tabIndex = 0;
+          // clicking the card opens the repo page in a new tab
+          item.addEventListener("click", () =>
+            window.open(r.html_url, "_blank")
+          );
+          item.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") window.open(r.html_url, "_blank");
+          });
+
+          item.innerHTML = `
+            <div class="flex items-center justify-between">
+             <div class="font-semibold">${r.name}</div>
+              <button class="ml-4 bg-[#0079ff] text-white text-xs px-2 py-1 rounded hover:bg-[#60abff]" onclick="event.stopPropagation(); window.open('${
+                r.html_url
+              }/archive/refs/heads/${
+            r.default_branch || "main"
+          }.zip','_blank')" aria-label="Download ${
+            r.name
+          } ZIP">Download</button>
+            </div>
+            <div class="text-sm text-[#2b3442] dark:text-white mt-1">${
+              r.description ? r.description : "No description"
+            }</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 flex items-center gap-3 flex-wrap">
+              <span>Created: ${new Date(r.created_at).toLocaleString()}</span>
+              <span>| Updated: ${new Date(r.updated_at).toLocaleString()}</span>
+              <span>| Language: ${r.language || "N/A"}</span>
+            </div>
+            <div class="text-xs mt-1 text-[#0079ff]">⭐ ${
+              r.stargazers_count
+            } • 🍴 ${r.forks_count}</div>
+          `;
+          reposListEl.appendChild(item);
+        });
+      }
+
+      // Function to hide all panels
+      function hideAllPanels() {
+        // Hide repos
+        cardArea.classList.remove("with-repos");
+        if (showReposBtn) showReposBtn.textContent = "Show Repos";
+
+        // Hide summary
+        const summaryEl = document.querySelector("#aiSummary");
+        if (summaryEl) summaryEl.style.display = "none";
+
+        // Hide comparison
+        const compareEl = document.querySelector("#aiComparison");
+        if (compareEl) compareEl.style.display = "none";
+      }
+
+      if (showReposBtn) {
+        showReposBtn.addEventListener("click", async (e) => {
+          // determine github id from input or rendered username
+          let github = entryField.value;
+          if (!github) {
+            const uname = username.textContent || "";
+            github = uname.replace("@", "").trim();
+          }
+          if (!github) return;
+
+          const isShowingRepos = cardArea.classList.contains("with-repos");
+
+          if (isShowingRepos) {
+            // If repos are showing, just hide them
+            hideAllPanels();
+          } else {
+            // Hide other panels first
+            hideAllPanels();
+            // Then show repos
+            const data = await repoDetails(github);
+            renderRepos(data);
+            cardArea.classList.add("with-repos");
+            showReposBtn.textContent = "Hide Repos";
+          }
+        });
+      }
+
+      // Compare button handler: fetch and compare two GitHub profiles
+      const compareBtn = document.querySelector(".compare-btn");
+      if (compareBtn) {
+        compareBtn.addEventListener("click", async () => {
+          const apiKey =
+            "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";
+
+          // Get first username
+          let github1 = entryField.value;
+          if (!github1) {
+            const uname = username.textContent || "";
+            github1 = uname.replace("@", "").trim();
+          }
+          if (!github1) {
+            alert("Please search or enter a GitHub username first.");
+            return;
+          }
+
+          // Get second username to compare
+          const github2 = prompt(
+            "Enter another GitHub username to compare with:"
+          );
+          if (!github2) return;
+
+          // create or find comparison element
+          let compareEl = document.querySelector("#aiComparison");
+          if (!compareEl) {
+            compareEl = document.createElement("div");
+            compareEl.id = "aiComparison";
+            compareEl.className = "ai-compare";
+            // insert after profile container
+            if (profileContainer && profileContainer.parentNode) {
+              profileContainer.parentNode.insertBefore(
+                compareEl,
+                profileContainer.nextSibling
+              );
+            } else {
+              document.body.appendChild(compareEl);
+            }
+          }
+
+          // Check if comparison is already showing
+          const isShowingComparison = compareEl.style.display === "block";
+
+          if (isShowingComparison) {
+            // If comparison is showing, just hide all panels
+            hideAllPanels();
+            return;
+          }
+
+          // Hide all panels before showing comparison
+          hideAllPanels();
+          compareEl.style.display = "block";
+
+          compareBtn.disabled = true;
+          compareEl.textContent =
+            "Comparing profiles — this may take a few seconds...";
+
+          try {
+            // Function to get top 6 repos from repo array
+            function getTopRepos(reposArr) {
+              const reposSorted = Array.isArray(reposArr)
+                ? reposArr.slice()
+                : [];
+              reposSorted.sort(
+                (a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0)
+              );
+              return reposSorted.slice(0, 6).map((r) => ({
+                name: r.name,
+                desc: r.description || "",
+                lang: r.language || "N/A",
+                stars: r.stargazers_count || 0,
+                forks: r.forks_count || 0,
+                url: r.html_url,
+              }));
+            }
+
+            // Get profile1 data from cache if available
+            let profile1;
+            if (cachedUsername === github1 && cachedProfile && cachedRepos) {
+              profile1 = {
+                userData: cachedProfile,
+                top: getTopRepos(cachedRepos),
+              };
+            } else {
+              // Fetch profile1 data if not cached
+              const userResp = await fetch(
+                `https://api.github.com/users/${github1}`
+              );
+              const userData = await userResp.json();
+              const reposArr = await repoDetails(github1);
+              profile1 = {
+                userData,
+                top: getTopRepos(reposArr),
+              };
+            }
+
+            // Always fetch fresh data for profile2
+            async function fetchProfile2Data(username) {
+              const userResp = await fetch(
+                `https://api.github.com/users/${username}`
+              );
+              const userData = await userResp.json();
+              // Use direct API call instead of repoDetails to avoid affecting cache
+              const reposResp = await fetch(
+                `https://api.github.com/users/${username}/repos`
+              );
+              const reposArr = await reposResp.json();
+              return {
+                userData,
+                top: getTopRepos(reposArr),
+              };
+            }
+
+            // Fetch profile2 data separately to avoid affecting cache
+            const profile2 = await fetchProfile2Data(github2);
+
+            // Build comparison prompt
+            const promptLines = [
+              `Compare these two GitHub profiles and provide insights for tech recruiters. Include:\n`,
+              `1. Key strengths of each developer`,
+              `2. Areas where they complement each other`,
+              `3. Technical skill comparison`,
+              `4. Collaboration potential`,
+              `5. Notable repositories comparison\n`,
+              `Profile 1:`,
+              `Name: ${profile1.userData.name || github1}`,
+              `Bio: ${profile1.userData.bio || "N/A"}`,
+              `Location: ${profile1.userData.location || "N/A"}`,
+              `Public repos: ${profile1.userData.public_repos}`,
+              `Followers: ${profile1.userData.followers}`,
+              `Following: ${profile1.userData.following}`,
+              `Top repos:`,
+              ...profile1.top.map(
+                (r) => `- ${r.name}: ${r.desc} [${r.lang}] ⭐${r.stars}`
+              ),
+              `\nProfile 2:`,
+              `Name: ${profile2.userData.name || github2}`,
+              `Bio: ${profile2.userData.bio || "N/A"}`,
+              `Location: ${profile2.userData.location || "N/A"}`,
+              `Public repos: ${profile2.userData.public_repos}`,
+              `Followers: ${profile2.userData.followers}`,
+              `Following: ${profile2.userData.following}`,
+              `Top repos:`,
+              ...profile2.top.map(
+                (r) => `- ${r.name}: ${r.desc} [${r.lang}] ⭐${r.stars}`
+              ),
+            ];
+
+            // Call OpenRouter API for comparison
+            const resp = await fetch(
+              "https://openrouter.ai/api/v1/chat/completions",
+              {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${apiKey}`,
+                  "Content-Type": "application/json",
+                  "HTTP-Referer": window.location.href,
+                  "X-Title": "DevDetective",
+                },
+                body: JSON.stringify({
+                  model: "meta-llama/llama-3.2-3b-instruct:free",
+                  messages: [{ role: "user", content: promptLines.join("\n") }],
+                }),
+              }
+            );
+
+            if (!resp.ok) {
+              const errorText = await resp.text();
+              throw new Error(`API returned ${resp.status}: ${errorText}`);
+            }
+
+            const json = await resp.json();
+
+            // Extract comparison text
+            let comparisonText = "";
+            if (json?.choices?.[0]?.message?.content) {
+              comparisonText = json.choices[0].message.content;
+            } else if (json?.choices?.[0]?.text) {
+              comparisonText = json.choices[0].text;
+            } else {
+              comparisonText =
+                "No comparison generated - see console for raw response.";
+              console.log("OpenRouter response:", json);
+            }
+
+            await renderAIOutput(compareEl, comparisonText);
+          } catch (err) {
+            console.error("Error during profile comparison:", err);
+            await renderAIOutput(
+              compareEl,
+              `Error: Could not compare profiles. ${err.message}`
+            );
+          } finally {
+            compareBtn.disabled = false;
+          }
+        });
+      }
+
+      // Summary button: call OpenRouter chat completion to summarise profile
+      const showSummaryBtn = document.querySelector(".show-summary-btn");
+      if (showSummaryBtn) {
+        showSummaryBtn.addEventListener("click", async () => {
+          const apiKey =
+            "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";
+
+          // determine github username
+          let github = entryField.value;
+          if (!github) {
+            const uname = username.textContent || "";
+            github = uname.replace("@", "").trim();
+          }
+          if (!github) {
+            alert("Please search or enter a GitHub username first.");
+            return;
+          }
+
+          // Check if summary is already showing
+          const existingSummary = document.querySelector("#aiSummary");
+          const isShowingSummary =
+            existingSummary && existingSummary.style.display !== "none";
+
+          if (isShowingSummary) {
+            // If summary is showing, just hide all panels
+            hideAllPanels();
+            return;
+          }
+
+          // Hide all panels before showing summary
+          hideAllPanels();
+
+          // create or find summary element displayed under profile card
+          let summaryEl = document.querySelector("#aiSummary");
+          if (!summaryEl) {
+            summaryEl = document.createElement("div");
+            summaryEl.id = "aiSummary";
+            summaryEl.className = "ai-summary ";
+            // insert after profile container
+            if (profileContainer && profileContainer.parentNode) {
+              profileContainer.parentNode.insertBefore(
+                summaryEl,
+                profileContainer.nextSibling
+              );
+            } else {
+              document.body.appendChild(summaryEl);
+            }
+          } else {
+            // Toggle summary visibility if it already exists
+            const isVisible = summaryEl.style.display !== "none";
+            if (isVisible) {
+              summaryEl.style.display = "none";
+              return; // Don't regenerate summary if we're just hiding it
+            }
+            summaryEl.style.display = "block";
+          }
+
+          showSummaryBtn.disabled = true;
+          summaryEl.textContent =
+            "Summarizing profile — this may take a few seconds...";
+
+          try {
+            // use cached profile if available to avoid refetch
+            let userData;
+            if (cachedUsername === github && cachedProfile) {
+              userData = cachedProfile;
+            } else {
+              const userResp = await fetch(
+                `https://api.github.com/users/${github}`
+              );
+              userData = await userResp.json();
+              // cache profile
+              cachedUsername = github;
+              cachedProfile = userData;
+            }
+
+            // fetch repos (repoDetails will return cached if available)
+            const reposArr = await repoDetails(github);
+
+            // prepare concise repo list (top 6 by stars)
+            const reposSorted = Array.isArray(reposArr) ? reposArr.slice() : [];
+            reposSorted.sort(
+              (a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0)
+            );
+            const top = reposSorted.slice(0, 6).map((r) => ({
+              name: r.name,
+              desc: r.description || "",
+              lang: r.language || "N/A",
+              stars: r.stargazers_count || 0,
+              forks: r.forks_count || 0,
+              url: r.html_url,
+            }));
+
+            // build prompt for the model
+            const promptLines = [];
+            promptLines.push(
+              `Summarize this GitHub profile for a recruiter. Provide a short summary (3-5 lines), top strengths, and 3 suggested improvements. Also list 3 notable repositories with one-line reason why they're notable.`
+            );
+            promptLines.push("\nProfile:");
+            promptLines.push(`Name: ${userData.name || "N/A"}`);
+            promptLines.push(`Login: ${userData.login || github}`);
+            if (userData.bio) promptLines.push(`Bio: ${userData.bio}`);
+            if (userData.location)
+              promptLines.push(`Location: ${userData.location}`);
+            promptLines.push(`Followers: ${userData.followers || 0}`);
+            promptLines.push(`Following: ${userData.following || 0}`);
+            promptLines.push(
+              `Public repos: ${
+                userData.public_repos ||
+                (Array.isArray(reposArr) ? reposArr.length : "N/A")
+              }`
+            );
+
+            promptLines.push("\nTop repositories:");
+            top.forEach((r, i) => {
+              const desc = r.desc ? `${r.desc}` : "";
+              promptLines.push(
+                `${i + 1}. ${r.name} — ${desc} [${r.lang}] ⭐${r.stars} • 🍴${
+                  r.forks
+                } • ${r.url}`
+              );
+            });
+
+            const finalPrompt = promptLines.join("\n");
+
+            // call OpenRouter chat completions with CORRECT headers and model
+            const resp = await fetch(
+              "https://openrouter.ai/api/v1/chat/completions",
+              {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${apiKey}`,
+                  "Content-Type": "application/json",
+                  "HTTP-Referer": window.location.href, // Required by OpenRouter
+                  "X-Title": "DevDetective", // Optional but recommended
+                },
+                body: JSON.stringify({
+                  model: "meta-llama/llama-3.2-3b-instruct:free", // Changed to a valid free model
+                  messages: [{ role: "user", content: finalPrompt }],
+                }),
+              }
+            );
+
+            if (!resp.ok) {
+              const errorText = await resp.text();
+              console.error("API Error:", resp.status, errorText);
+              throw new Error(`API returned ${resp.status}: ${errorText}`);
+            }
+
+            const json = await resp.json();
+
+            // extract content in common shapes
+            let aiText = "";
+            if (
+              json?.choices &&
+              Array.isArray(json.choices) &&
+              json.choices[0]
+            ) {
+              if (json.choices[0].message && json.choices[0].message.content)
+                aiText = json.choices[0].message.content;
+              else if (
+                json.choices[0].message &&
+                json.choices[0].message.content?.text
+              )
+                aiText = json.choices[0].message.content.text;
+              else if (json.choices[0].text) aiText = json.choices[0].text;
+            }
+            // fallback: some APIs use 'output' or 'result'
+            if (!aiText && json?.output) aiText = JSON.stringify(json.output);
+            if (!aiText && json?.result) aiText = JSON.stringify(json.result);
+
+            if (!aiText)
+              aiText = "No summary produced — see raw response in console.";
+            await renderAIOutput(summaryEl, aiText);
+            console.log("OpenRouter response:", json);
+          } catch (err) {
+            console.error("Error during AI summarization:", err);
+            await renderAIOutput(
+              summaryEl,
+              `Error: Could not summarize profile. ${err.message}`
+            );
+          } finally {
+            showSummaryBtn.disabled = false;
+          }
+        });
+      }
+
+      searchBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let githubID = entryField.value;
+
+        if (githubID === "") return;
+        else {
+          // fetch profile details; don't call repoDetails here to avoid
+          // fetching repos twice (renderProfileInfo already fetches repo list)
+          fetchDetails(githubID);
+        }
+      });
+
+      theme.addEventListener("click", () => {
+        let body = document.body;
+        if (body.classList.contains("dark")) {
+          body.classList.remove("dark");
+          themeName.textContent = "DARK";
+          themeIcon.src = "moon-fill.svg";
+          download.src = "dark-download.svg";
+        } else {
+          body.classList.add("dark");
+          themeName.textContent = "LIGHT";
+          themeIcon.src = "sun.svg";
+          download.src = "light-download.svg";
+        }
+      });
+
+      // function darkModeProperties(){
+      //     document.body.classlist.add("dark");
+      //     themeName.textContent="LIGHT";
+      //     themeIcon.src="sun.svg";
+      //     darkMode=true;
+      //     localStorage.setItem("dark-mode", true);  console.log("setting dark mode to false");
+
+      //     console.log("setting dark mode to true");
+
+      // }
+      // function lightModeProperties(){
+      //     document.body.classlist.remove("dark");
+      //     themeName.textContent="DARK";
+      //     themeIcon.src="moon-fill.svg";
+      //     darkMode = false;
+      //     console.log("darkmode changed to " + darkMode);
+
+      //     localStorage.setItem("dark-mode", false);
+      //     console.log("setting dark mode to false");
+      // }
+
+      // function init() {
+      //     //initialise dark-mode variable to false;
+      //     //darkMode = true -> dark mode enable karna h
+      //     //darMode = false -> light mode enable karna h
+      //     darkMode = false;
+
+      //     //HW
+      //   // const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      //     const value = localStorage.getItem("dark-mode");
+
+      //     if(value === null) {
+      //       console.log("null k andar");
+      //       localStorage.setItem("dark-mode", darkMode);
+      //       lightModeProperties();
+      //     }
+      //     else if(value == "true") {
+      //       console.log("truer k andar");
+      //       darkModeProperties();
+      //     }
+      //     else if(value == "false") {
+      //       console.log("false k andar");
+      //       lightModeProperties();
+      //     }
+      //   }
+
+      //   init();
+
+      function capture(element) {
+        html2canvas(element, {
+          backgroundColor: null,
+          useCors: true,
+        }).then(function (canvas) {
+          const URL = canvas.toDataURL("image/jpeg", 1);
+          const a = document.createElement("a");
+          a.href = URL;
+          a.download = `dev_detective_${profileName.textContent}.jpeg`;
+          a.click();
+        });
+      }
     </script>
   </body>
 </html>
