@@ -46,6 +46,8 @@ just clone the repo in your device and open folder in cmd and write command "npm
 
 * [ ] not working properly after hosting on any platform like vercel
 
+## deployed link https://hacksherlock.netlify.app
+
 
 ## :gem: Acknowledgements
 
