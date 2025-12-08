@@ -1,6 +1,6 @@
 <div align='center'>
 
-<h1>devDetective</h1>
+<h1>HackSherlock</h1>
 <p>Generate your profile card after entering your github username</p>
 
 <h4> <span> · </span> <a href="https://github.com/Bhaveshkhokhar/dev-detective/blob/main/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/Bhaveshkhokhar/dev-detective/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/Bhaveshkhokhar/dev-detective/issues"> Request Feature </a> </h4>
